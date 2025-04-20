@@ -98,7 +98,7 @@ class MainWindow(QMainWindow):
     def open_image(self):
         # Check if running in a test environment
         if os.getenv("TEST_ENV"):
-            file_path = "tests/floorplan.png"
+            file_path = "tests/floorplan.jpg"
         else:
             # Open file dialog to select an image
             options = QFileDialog.Options()
@@ -249,7 +249,9 @@ class Overlay(QWidget):
     def __init__(self, parent=None, image_label=None):
         super().__init__(parent)
         self.setAttribute(Qt.WA_NoSystemBackground)
-        self.setAttribute(Qt.WA_TransparentForMouseEvents, True)  # Let events pass through by default
+        self.setAttribute(
+            Qt.WA_TransparentForMouseEvents, True
+        )  # Let events pass through by default
         self.crop_rect = QRect()
         self.cropping = False
         self.image_label = image_label
